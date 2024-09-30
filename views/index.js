@@ -3,7 +3,7 @@ const createHomepageTemplate = () => /*html*/`
   <html>
     <head>
       <title>My Reading List</title>
-      <script src="https://unpkg.com/htmx.org@1.9.12"></script>
+      <script src="https://unpkg.com/htmx.org@2.0.2"></script>
       <link rel="stylesheet" href="/styles.css">
     </head>
     <body>
@@ -13,12 +13,17 @@ const createHomepageTemplate = () => /*html*/`
 
       <main>
         <div class="book-list">
-          <!-- book list here later -->
+          <button hx-get="/book"  hx-target=".book-list"> Show Button</button>
         </div>
+
 
         <div class="add-book-form">
           <h2>What do you want to read?</h2>
-          <!-- form template here later -->
+          <form >
+          <input id="title"  type="text" name="title" placeholder="title"/>
+          <input id="author"  type="text" name="author" placeholder="author"/>
+          <button hx-post="/book" hx-target=".book-list ul" hx-swap="beforeend">Add Book</button>
+        </form>
         </div>
       </main>
     </body>
