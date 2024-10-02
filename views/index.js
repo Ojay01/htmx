@@ -13,7 +13,7 @@ const createHomepageTemplate = () => /*html*/`
 
       <main>
         <div class="book-list">
-          <button hx-get="/book"  hx-target=".book-list"> Show Button</button>
+          <button hx-get="/book" hx-trigger="mouseenter"  hx-target=".book-list"> Show Button</button>
         </div>
 
 
