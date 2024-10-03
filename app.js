@@ -36,6 +36,13 @@ app.get('/book/:id', (req, res) => {
   res.send(getBook(book))
 })
 
+app.delete('/book/:id', (req, res) => {
+  const {id} = req.params;
+  const book = BOOKS_DATA.find(b => b.id === id);
+ BOOKS_DATA.splice(book, 1)
+  res.send()
+})
+
 // listen to port
 app.listen(3005, () => {
   console.log('App listening on port 3005');
