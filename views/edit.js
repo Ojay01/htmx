@@ -1,0 +1,19 @@
+const edit = (book) => /*html*/`
+  <form hx-put="/book/update/${book.id}" hx-target="closest li" hx-swap="outerHTML">
+    <input 
+      name="title"
+      placeholder="title" 
+      type="text" 
+      value="${book.title}" 
+    />
+    <input 
+      name="author"
+      placeholder="author" 
+      type="text" 
+      value="${book.author}" 
+    />
+    <button>Confirm</button>
+  </form>
+`;
+
+export default edit;

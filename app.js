@@ -3,6 +3,7 @@ import createHomepageTemplate from './views/index.js';
 import bookList from './views/bookList.js';
 import BOOKS_DATA from './data/data.js';
 import getBook from './views/book.js';
+import edit from './views/edit.js';
 
 // create app
 const app = express();
@@ -36,10 +37,27 @@ app.get('/book/:id', (req, res) => {
   res.send(getBook(book))
 })
 
+app.get('/book/edit/:id', (req, res) => {
+  const book = BOOKS_DATA.find(b => b.id === req.params.id);
+  res.send(edit(book))
+})
+
+app.put('/book/update/:id', (req, res) => {
+  const {title, author} = req.body;
+  const {id} = req.params;
+
+  const newBook = {title, author, id};
+
+  const idx = BOOKS_DATA.findIndex(b => b.id === id);
+  BOOKS_DATA[idx] = newBook
+
+  res.send(getBook(newBook));
+})
+
 app.delete('/book/:id', (req, res) => {
   const {id} = req.params;
   const book = BOOKS_DATA.find(b => b.id === id);
- BOOKS_DATA.splice(book, 1)
+  BOOKS_DATA.splice(book, 1)
   res.send()
 })
 

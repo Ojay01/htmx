@@ -1,6 +1,6 @@
 const getBook = (book) => /*html*/`
-    <li data-id="${book.id}">
-        <div class="details">
+    <li data-id="${book.id}" >
+        <div class="details" hx-target="closest li" hx-get="/book/edit/${book.id}">
         <h3> ${book.title}</h3>
         <p> ${book.author}</p>
         </div>
